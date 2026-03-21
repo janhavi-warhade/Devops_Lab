@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Feedback Form</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Internal CSS -->
+    <style>
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Student Feedback Registration Form</h2>
+
+<form id="feedbackForm" onsubmit="return validateForm()">
+
+    <!-- Student Name -->
+    <label>Student Name:</label>
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <!-- Email -->
+    <label>Email ID:</label>
+    <input type="text" id="email" placeholder="Enter your email">
+
+    <!-- Mobile -->
+    <label>Mobile Number:</label>
+    <input type="text" id="mobile" placeholder="Enter your mobile number">
+
+    <!-- Department -->
+    <label>Department:</label>
+    <select id="department">
+        <option value="">Select Department</option>
+        <option value="CSE">CSE</option>
+        <option value="IT">IT</option>
+        <option value="EXTC">EXTC</option>
+        <option value="Mechanical">Mechanical</option>
+    </select>
+
+    <!-- Gender -->
+    <label>Gender:</label><br>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+
+    <br><br>
+
+    <!-- Comments -->
+    <label>Feedback Comments:</label>
+    <textarea id="comments" placeholder="Write your feedback..."></textarea>
+
+    <!-- Buttons -->
+    <input type="submit" value="Submit">
+    <input type="reset" value="Reset">
+
+</form>
+
+<!-- Error Message -->
+<p id="error" style="color:red; text-align:center;"></p>
+
+<!-- JavaScript -->
+<script src="script.js"></script>
+
+</body>
+</html>

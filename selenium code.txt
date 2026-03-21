@@ -1,0 +1,56 @@
+package seleniumtest;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class TestForm {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        System.setProperty("webdriver.chrome.driver",
+        "C:\\Users\\HP\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+
+        WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
+
+        // 👉 OPEN YOUR HTML FILE
+        driver.get("file:///D:/Devops_ca2/feedback.html");
+
+        // ✅ VALID TEST CASE
+        driver.findElement(By.id("name")).sendKeys("Janhavi");
+        driver.findElement(By.id("email")).sendKeys("test@gmail.com");
+        driver.findElement(By.id("mobile")).sendKeys("9876543210");
+
+        Select dept = new Select(driver.findElement(By.id("department")));
+        dept.selectByVisibleText("CSE");
+
+        driver.findElement(By.xpath("//input[@value='Female']")).click();
+
+        driver.findElement(By.id("comments"))
+                .sendKeys("This is a proper feedback form with correct validation and usability features included");
+
+        driver.findElement(By.xpath("//input[@value='Submit']")).click();
+
+        Thread.sleep(2000);
+        driver.switchTo().alert().accept();
+
+        // ✅ RESET
+        driver.findElement(By.xpath("//input[@value='Reset']")).click();
+
+        // ❌ INVALID EMAIL TEST
+        driver.findElement(By.id("name")).sendKeys("Test");
+        driver.findElement(By.id("email")).sendKeys("wrongemail");
+        driver.findElement(By.id("mobile")).sendKeys("9876543210");
+
+        driver.findElement(By.xpath("//input[@value='Submit']")).click();
+        Thread.sleep(2000);
+        driver.switchTo().alert().accept();
+
+        System.out.println("All test cases executed successfully!");
+
+        Thread.sleep(5000);
+        driver.quit();
+    }
+}
